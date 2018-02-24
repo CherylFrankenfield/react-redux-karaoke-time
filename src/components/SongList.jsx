@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { restartSong } from './../actions';
 
 const SongList = ({ dispatch, songList }) => {
   let action;
@@ -11,11 +12,7 @@ const SongList = ({ dispatch, songList }) => {
         let song = songList[songId];
         return <li key = {songId} onClick = {() => {
           if (song.arrayPosition > 0){
-            action = {
-              type: 'RESTART_SONG',
-              currentSongId: songId
-            };
-            dispatch(action);
+            dispatch(restartSong(songId));
           }
           action = {
             type: 'CHANGE_SONG',
