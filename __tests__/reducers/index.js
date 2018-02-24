@@ -31,9 +31,12 @@ describe('Karaoke App', () => {
     it('Should accept and return initial state.', () => {
       expect(songChangeReducer(initialState, { type: null })).toEqual(initialState);
     });
-
+//Old method for writing actions:
+    // it('Should change selectedSong.', () => {
+    //   expect(songChangeReducer(initialState, { type: 'CHANGE_SONG', newSelectedSongId: 1 })).toEqual(1);
+    // });
     it('Should change selectedSong.', () => {
-      expect(songChangeReducer(initialState, { type: 'CHANGE_SONG', newSelectedSongId: 1 })).toEqual(1);
+      expect(songChangeReducer(initialState.currentSongId, actions.changeSong(2))).toEqual(2);
     });
   });
 
