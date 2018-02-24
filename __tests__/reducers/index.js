@@ -13,7 +13,7 @@ describe('Karaoke App', () => {
       expect(lyricChangeReducer(initialState.songsById, { type: null })).toEqual(initialState.songsById);
     });
 
-    it('Should update currently-displayed lyric of song', () => {
+    it('Should update currently displayed lyric of song', () => {
       expect(lyricChangeReducer(initialState.songsById, { type: 'NEXT_LYRIC', currentSongId: 2 })[2].arrayPosition).toEqual(initialState.songsById[2].arrayPosition + 1);
     });
 
