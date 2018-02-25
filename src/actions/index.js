@@ -64,6 +64,7 @@ export function fetchLyrics(title, artist, musicMatchId, localSongId, dispatch) 
       lyrics = lyrics.replace('"', '');
       const songArray = lyrics.split(/\n/g).filter(entry => entry!="");
       dispatch(receiveSong(title, artist, localSongId, songArray));
+      dispatch(changeSong(localSongId));
     } else {
       console.log('We couldn\'t locate lyrics for this song!');
     }
