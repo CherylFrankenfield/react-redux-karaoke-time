@@ -22,6 +22,15 @@ export const requestSong = (title, localSongId) => ({
   songId: localSongId
 });
 
+export const receiveSong = (title, artist, songId, songArray) => ({
+  type: types.RECEIVE_SONG,
+  songId,
+  title,
+  artist,
+  songArray,
+  receivedAt: Date.now()
+});
+
 export function fetchSongId(title) {
   return function (dispatch) {
     const localSongId = v4();
