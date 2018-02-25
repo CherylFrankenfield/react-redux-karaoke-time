@@ -22,7 +22,6 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
       [action.currentSongId]: newSongsByIdEntry
     });
     return newSongsByIdStateSlice;
-
   case types.REQUEST_SONG:
     newSongsByIdEntry = {
       isFetching: true,
@@ -33,11 +32,6 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
       [action.songId]: newSongsByIdEntry
     });
     return newSongsByIdStateSlice;
-
-  default:
-    return state;
-  }
-
   case types.RECEIVE_SONG:
     newSongsByIdEntry = Object.assign({}, state[action.songId], {
       isFetching: false,
@@ -52,6 +46,9 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
       [action.songId]: newSongsByIdEntry
     });
     return newSongsByIdStateSlice;
+  default:
+    return state;
+  }  
 };
 
 export default lyricChangeReducer;
