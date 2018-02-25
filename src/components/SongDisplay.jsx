@@ -38,18 +38,43 @@ SongDisplay.propTypes = {
   dispatch: PropTypes.func
 };
 
+//wait until the song's isFetching property is false before rendering its data. Temporarily set its info to blank strings.
 const mapStateToProps = state => {
+  let info;
   const song = state.songsById[state.currentSongId];
-  const songInfo = {
-    id: song.songId,
-    artist: song.artist,
-    title: song.title,
-    songArray: song.songArray,
-    arrayPosition: song.arrayPosition
-  };
+  if (!state.songsById[state.currentSongId].isFetching) {
+    info = {
+      id: state.currentSongId,
+      artist: song.artist,
+      title: song.title,
+      songArray: song.songArray,
+      arrayPosition: song.arrayPosition
+    };
+  } else {
+    info = {
+      artist:'',
+      title: '',
+      songArray: '',
+      arrayPosition: ''
+    };
+  }
   return {
-    song: songInfo
+    song: info
   };
 };
+//without conditional that checks isFetching:
+// const mapStateToProps = state => {
+//   const song = state.songsById[state.currentSongId];
+//   const songInfo = {
+//     id: song.songId,
+//     artist: song.artist,
+//     title: song.title,
+//     songArray: song.songArray,
+//     arrayPosition: song.arrayPosition
+//   };
+//   return {
+//     song: songInfo
+//   };
+// };
 
 export default connect(mapStateToProps)(SongDisplay);
