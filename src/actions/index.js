@@ -16,6 +16,12 @@ export const changeSong = (newSelectedSongId) => ({
   newSelectedSongId
 });
 
+export const requestSong = (title, localSongId) => ({
+  type: types.REQUEST_SONG,
+  title,
+  songId: localSongId
+});
+
 export function fetchSongId(title) {
   return function (dispatch) {
     const localSongId = v4();
